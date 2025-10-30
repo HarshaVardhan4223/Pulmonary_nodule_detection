@@ -31,6 +31,16 @@ pulmonary-nodule-detection/
 
 ---
 
+💾 Model File
+
+You can download the trained model (final_pulmonary_nodule_model.keras) from my Google Drive using the link below and place it inside the models/ folder before running the app:
+
+📁 Download Link: https://drive.google.com/file/d/1jwSNGUZPZDosRqWLWAdsniZleYp7Vzny/view?usp=sharing
+
+After downloading, ensure the model file is saved at:
+
+pulmonary-nodule-detection/models/final_pulmonary_nodule_model.keras
+
 ## 📊 Dataset
 
 The dataset used for this project consists of **CT scan images** categorized into:  
