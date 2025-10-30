@@ -83,7 +83,7 @@ The model predicts whether the image is Benign, Malignant, or Unlabeled.
 A confidence percentage and styled results are displayed on the UI.
 
 🩻 Sample Images & Model Predictions
-<p align="center"> <img src="assets/sample1.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample2.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample3.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center"> <img src="assets/sample4.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample5.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center"> <b>Figure:</b> Sample chest scan images and corresponding model predictions shown in the Streamlit app. </p>
+<p align="center"> <img src="assets/sample1.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample2.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample3.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center">  <img src="assets/sample5.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center"> <b>Figure:</b> Sample chest scan images and corresponding model predictions shown in the Streamlit app. </p>
 
 💡 Features
 
