@@ -15,24 +15,17 @@ This project focuses on **early detection of pulmonary nodules** (possible signs
 ---
 
 ## 📂 Project Structure
-
-Pulmonary_Nodule_Detection/
+pulmonary-nodule-detection/
 │
- # Source code files
-│ ── train.py # Training script
-│ ── predict.py # Inference script
-│ 
+├── models/
+│   └── final_pulmonary_nodule_model.keras      # Trained CNN model
 │
-| ─ models/ # Saved trained models (not uploaded to GitHub)
+├── app/
+│   └── app.py                                 # Streamlit web app
 │
-├── sample_images/ # Few small sample images for testing
-│
-├── Lung_Cancer_Prediction.v2i.folder/ # Full dataset (Not in GitHub, download separately)
-│
-├── app.py # Streamlit web app
-| 
-|
-└── .gitignore # Ignored files (datasets, large models, cache)
+├── requirements.txt                           # All dependencies
+├── README.md                                  # Project documentation
+└── assets/                                    # Optional: logos, sample images, etc.
 
 
 
@@ -66,50 +59,70 @@ source venv/Scripts/activate   # On Windows
 source venv/bin/activate       # On Linux/Mac
 
 Download dataset from the Google Drive link
- and place it inside  --   Pulmonary_Nodule_Detection/Lung_Cancer_Prediction.v2i.folder/
+ and place it inside  --   pulmonary_nodule_detection/models/final_pulmonary_nodule_model.keras
 
-🚀 Usage
-1️⃣ Training the Model:
+▶️ Run the Application
 
-python train.py
-
-2️⃣ Running Predictions:
-
-python predict.py --image_path sample_images/test_image.jpg
-
-3️⃣ Running the Streamlit Web App:
+Once setup is complete, run:
 
 streamlit run app.py
 
 
-This will launch a web-based interface where you can upload lung CT scan images and get predictions along with Grad-CAM visualizations.
+Then open your browser and go to:
+
+http://localhost:8501
+
+🖼️ How It Works
+
+Upload a chest CT scan image (JPG/PNG).
+
+The image is preprocessed and passed to the CNN model.
+
+The model predicts whether the image is Benign, Malignant, or Unlabeled.
+
+A confidence percentage and styled results are displayed on the UI.
+
+🩻 Sample Images & Model Predictions
+<p align="center"> <img src="assets/sample1.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample2.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample3.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center"> <img src="assets/sample4.jpg" width="30%" style="margin:10px; border-radius:10px;" /> <img src="assets/sample5.jpg" width="30%" style="margin:10px; border-radius:10px;" /> </p> <p align="center"> <b>Figure:</b> Sample chest scan images and corresponding model predictions shown in the Streamlit app. </p>
+
+💡 Features
+
+✅ Deep learning–based pulmonary nodule classification
+✅ Stylish Netflix-inspired Streamlit UI
+✅ Real-time predictions with progress animation
+✅ Lottie loading animation integration
+✅ Clean, modular code structure
+
+🧩 Code Highlights
+
+Model Loading (cached for efficiency):
+
+@st.cache_resource
+def load_model():
+    model = tf.keras.models.load_model(model_path)
+    return model
 
 
-📈 Model Performance
+Image Preprocessing:
 
-Accuracy: ~XX% (update with your results)
-
-Precision: XX%
-
-Recall: XX%
-
-F1-score: XX%
+def preprocess_image(image):
+    image = np.array(image.convert("RGB"))
+    image = cv2.resize(image, (224, 224))
+    image = image / 255.0
+    return np.expand_dims(image, axis=0)
 
 
-🧠 Explainability with Grad-CAM
+Prediction:
 
-The project integrates Grad-CAM (Gradient-weighted Class Activation Mapping) to highlight the regions in CT scans that influence the model’s predictions, improving trust and interpretability.
+prediction = model.predict(processed_image)
+predicted_class = class_names[np.argmax(prediction)]
+confidence = np.max(prediction) * 100
 
-🔮 Future Work
+📊 Future Enhancements
 
-Improve accuracy with 3D CNNs for volumetric CT data.
-
-Deploy using FastAPI/Flask as a backend for mobile apps.
-
-Extend to multi-class classification (different lung diseases).
-
-Integrate with Flutter/React Native mobile app.
-
+🚀 Integrate Grad-CAM explainability for highlighting affected regions
+📱 Build a Flutter-based mobile interface for model interaction
+☁️ Deploy on Streamlit Cloud or Hugging Face Spaces
 
 🙌 Contributors
 
